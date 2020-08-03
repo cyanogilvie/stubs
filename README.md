@@ -27,7 +27,7 @@ defined by the extension).
 Exb
 ---
 This extension links against the Exa stubs library and calls its API.
-Autoconf magic handles linking to the Exa stubs, driven from the --with=exa
+Autoconf magic handles linking to the Exa stubs, driven from the --with-exa=
 configure setting.
 
 Exc
