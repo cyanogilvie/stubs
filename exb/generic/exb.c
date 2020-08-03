@@ -105,6 +105,8 @@ static int getfoo(ClientData cdata, Tcl_Interp* interp, int objc, Tcl_Obj* const
 
 	if (objc != 2) {
 		Tcl_WrongNumArgs(interp, 1, objv, "exahandle");
+		code = TCL_ERROR;
+		goto finally;
 	}
 
 	if (TCL_OK != (code = get_exadata_from_obj(interp, objv[1], &data))) goto finally;
