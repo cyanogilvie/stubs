@@ -1,0 +1,14 @@
+Makefile
+configure
+pkgIndex.tcl
+tclconfig
+exaConfig.sh
+generic/exa.h
+autom4te.cache
+config.log
+config.status
+tags
+*.so
+*.o
+*.a
+*.swp

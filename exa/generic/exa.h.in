@@ -1,0 +1,31 @@
+#include <tcl.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef BUILD_exa
+#undef TCL_STORAGE_CLASS
+#define TCL_STORAGE_CLASS DLLEXPORT
+#endif
+
+typedef struct ExaData {
+	const char*	name;
+} ExaData;
+
+/* Stubs exported API */
+
+#ifdef USE_EXA_STUBS
+extern const char* ExaInitializeStubs(Tcl_Interp* interp);
+#define Exa_InitStubs(interp)	ExaInitializeStubs((interp))
+#else
+#define Exa_InitStubs(interp)	Tcl_PkgRequire((interp), "@PACKAGE_NAME@", "@PACKAGE_VERSION@", 0)
+#endif
+
+#include "exaDecls.h"
+
+EXTERN int Exa_Init _ANSI_ARGS_((Tcl_Interp * interp));
+
+#ifdef __cplusplus
+}
+#endif

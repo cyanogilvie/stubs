@@ -1,0 +1,23 @@
+if {[lsearch [namespace children] ::tcltest] == -1} {
+    package require tcltest
+    namespace import ::tcltest::*
+}
+
+lappend auto_path /tmp/stubs/lib
+
+package require exb
+
+test exb-1.1 {newexa} -body { #<<<
+	set handle	[exb::newexa "hello, world" 6 7]
+	exb::getfoo $handle
+} -cleanup {
+	unset -nocomplain handle
+} -result 6
+#>>>
+
+
+# cleanup
+::tcltest::cleanupTests
+return
+
+# vim: ft=tcl foldmethod=marker foldmarker=<<<,>>> ts=4 shiftwidth=4

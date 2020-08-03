@@ -1,0 +1,5 @@
+Example of exporting and using stubs from extensions:
+
+- exa exports stubs
+- exb uses those stubs
+- exc is the same code as exa but without stubs, so exc -> exa is an example of the diff to allow exporting stubs from an extension
