@@ -1,7 +1,7 @@
 EXPORTING STUBS FROM AN EXTENSION
 =================================
 
-The stubs mechanism uesd by Tcl is great, and easy to use for extensions to
+The stubs mechanism used by Tcl is great, and easy to use for extensions to
 link against Tcl in a version-portable way.  While the mechanism exists for
 extension authors to provide their own stubs APIs for other extensions to link
 against and use, the documentation available is incomplete or wrong, and every
