@@ -44,7 +44,7 @@ int Exa_GetBar(ExaData* data)
 
 //}}}
 
-extern const TclStubs* const exaConstStubsPtr;
+extern const ExaStubs* const exaConstStubsPtr;
 
 #ifdef __cplusplus
 extern "C" {
