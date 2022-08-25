@@ -16,14 +16,14 @@ proc writetext {fn chars} { #<<<
 set newname	[lindex $argv 0]
 if {$newname eq ""} {
 	puts stderr "Usage: $::argv0 newname"
-	puts stderr "Replace all instances of \"dedup\" with case-appropriate versions of \$newname"
+	puts stderr "Replace all instances of \"exa\" with case-appropriate versions of \$newname"
 	exit 1
 }
 
 set map	[list \
-	dedup		[string tolower $newname] \
-	Dedup		[string totitle $newname] \
-	DEDUP		[string toupper $newname] \
+	exa		[string tolower $newname] \
+	Exa		[string totitle $newname] \
+	EXA		[string toupper $newname] \
 ]
 
 proc process_filename from { #<<<
@@ -41,13 +41,27 @@ proc process_filename from { #<<<
 
 #>>>
 
-set targets	[glob [file dirname [file normalize [info script]]]/*]
+proc contained {base path} { #<<<
+	set fqfn	[file normalize $path]
+	set pref	[string range $path 0 [string length $base]-1]
+	expr {$pref eq $base}
+}
+
+#>>>
+
+set here	[file dirname [file normalize [info script]]]
+set targets	[list {*}[glob $here/*] {*}[glob $here/.*]]
 while {[llength $targets]} {
 	set targets	[lassign $targets[unset targets] e]
 
+	if {[file tail $e] in {. ..}} continue	;# Very important, otherwise the glob for hidden files matches .. and walks up to the root of the tree, replacing everything everywhere
+	if {![contained $here $e]} {
+		error "Path \"$e\" is not contained in \"$here\", bailing"
+	}
+
 	if {[file isdirectory $e]} {
 		set newname	[process_filename $e]
-		lappend targets {*}[glob -nocomplain $newname/*]
+		lappend targets {*}[glob -nocomplain $newname/*] {*}[glob -nocomplain $newname/.*]
 	} else {
 		if {[file type $e] eq "link"} {
 			# Only transform the name
