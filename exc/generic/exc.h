@@ -9,20 +9,20 @@ extern "C" {
 #define TCL_STORAGE_CLASS DLLEXPORT
 #endif
 
-typedef struct ExaData {
+typedef struct ExcData {
 	const char*	name;
-} ExaData;
+} ExcData;
 
-struct exa_data {
+struct exc_data {
 	// Public members
-	ExaData	pub;
+	ExcData	pub;
 
 	// Private members
 	int		foo;
 	int		bar;
 };
 
-struct exa_data* ExaGetData(ExaData* data);
+struct exc_data* ExcGetData(ExcData* data);
 
 EXTERN int Exc_Init _ANSI_ARGS_((Tcl_Interp * interp));
 

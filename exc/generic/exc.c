@@ -1,41 +1,41 @@
 #include "exc.h"
 
-struct exa_data* ExaGetData(ExaData* data)
+struct exc_data* ExcGetData(ExcData* data)
 {
-	return (struct exa_data*)data;
+	return (struct exc_data*)data;
 }
 
-ExaData* Exa_NewData(const char* name, int foo, int bar)
+ExcData* Exc_NewData(const char* name, int foo, int bar)
 {
-	struct exa_data*	d = ckalloc(sizeof(struct exa_data));
+	struct exc_data*	d = ckalloc(sizeof(struct exc_data));
 
 	d->pub.name = name;
 	d->foo = foo;
 	d->bar = bar;
 
-	fprintf(stderr, "In Exa_NewData, returning %p\n", d);
-	return (ExaData*)d;
+	fprintf(stderr, "In Exc_NewData, returning %p\n", d);
+	return (ExcData*)d;
 }
 
 
-void Exa_FreeData(ExaData** data)
+void Exc_FreeData(ExcData** data)
 {
 	ckfree(*data);
 	*data = NULL;
 }
 
 
-int Exa_GetFoo(ExaData* data)
+int Exc_GetFoo(ExcData* data)
 {
-	struct exa_data*	d = ExaGetData(data);
-	fprintf(stderr, "In Exa_GetFoo, returning %d from exa_data: %p\n", d->foo, d);
+	struct exc_data*	d = ExcGetData(data);
+	fprintf(stderr, "In Exc_GetFoo, returning %d from exc_data: %p\n", d->foo, d);
 	return d->foo;
 }
 
 
-int Exa_GetBar(ExaData* data)
+int Exc_GetBar(ExcData* data)
 {
-	struct exa_data*	d = ExaGetData(data);
+	struct exc_data*	d = ExcGetData(data);
 	return d->bar;
 }
 
