@@ -7,7 +7,7 @@ extension authors to provide their own stubs APIs for other extensions to link
 against and use, the documentation available is incomplete or wrong, and every
 extension I can find that has tried to use it is full of errors or hacks, other
 than the reference example of Tk, or TclOO / dict, which don't follow the 
-pattern layed out in TEA for this.
+pattern laid out in TEA for this.
 
 These are a collection of fairly minimal extensions that export and use their
 own stubs APIs, in the least broken and hacky ways I could find, so that I
